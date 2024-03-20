@@ -24,21 +24,21 @@ export const columns = [
       size:20
     },
     {
-      id:'sub category',
+      id:'subcategory',
       accessorKey: 'subcategory',
       header: 'Subcategory',
       size:20
     },
     {
       accessorFn: (row) => formatDate(row.createdAt),
-        id: 'createdat',
+        id: 'createdAt',
         header: 'Created At',
         accessorKey:"createdAt",
         size:20
     },
     {
       accessorFn: (row) => formatDate(row.updatedAt),
-        id: 'updatedat',
+        id: 'updatedAt',
         header: 'Updated At',
         accessorKey:"updatedAt",
         size:20
