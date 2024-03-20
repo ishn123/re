@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+*[data-testid="SearchIcon"] {
+  display: none !important;
+}
+.MuiTableCell-root{
+  text-align: center !important;
+}
+.MuiBox-root{
+  gap: 12px !important;
+}
