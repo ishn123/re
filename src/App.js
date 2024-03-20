@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import {
   MRT_GlobalFilterTextField,
   MRT_ShowHideColumnsButton, MaterialReactTable,
   useMaterialReactTable
 } from "material-react-table";
-import { CustomPaginationComponent } from './CustomPagination';
+import { CustomPaginationComponent } from './components/CustomPagination';
 import { columns } from './data/makedata';
 import data from "./data/sample.json";
 import "./App.css"
 import { Box, Button, Drawer, List, ListItem, Switch, Typography } from '@mui/material';
-import CustomGroupingDropDown from "./CustomGroupingDropDown";
+import CustomGroupingDropDown from "./components/CustomGroupingDropDown";
 import GroupIcon from '@mui/icons-material/Group';
 import SortIcon from '@mui/icons-material/Sort';
-import CustomSorting from './CustomSorting';
+import CustomSorting from './components/CustomSorting';
 const App = () => {
 
   const [open, setOpen] = useState(false);
@@ -47,7 +47,8 @@ const App = () => {
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);
   };
-
+  
+  
   const list = (type, table) => {
     switch (type) {
       case "hide/show":
@@ -91,6 +92,7 @@ const App = () => {
                 subcategory: true,
                 sale_price:true
               });
+            
               // setColumnVisibility(columnVisib);
             }}>Show all columns</Button>
             <Button variant="contained" color="primary" onClick={()=>{

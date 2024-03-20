@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { columns } from './data/makedata';
+import { columns } from '../data/makedata';
 import { Box, Button, Typography } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
