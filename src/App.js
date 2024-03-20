@@ -10,9 +10,13 @@ import data from "./data/sample.json";
 import "./App.css"
 import { Box, Button, Drawer, List, ListItem, Switch, Typography } from '@mui/material';
 import CustomGroupingDropDown from "./components/CustomGroupingDropDown";
-import GroupIcon from '@mui/icons-material/Group';
+import LayersIcon from '@mui/icons-material/Layers';
 import SortIcon from '@mui/icons-material/Sort';
+import SwapVertIcon from '@mui/icons-material/SwapVert';
 import CustomSorting from './components/CustomSorting';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import CustomFiltering from './components/CustomFiltering';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 const App = () => {
 
   const [open, setOpen] = useState(false);
@@ -121,6 +125,11 @@ const App = () => {
         return (
           <CustomSorting sorting={sorting} setSorting={setSorting}></CustomSorting>
         )
+
+      case "filter":
+        return (
+        <CustomFiltering></CustomFiltering>
+        )
     }
 
 
@@ -140,6 +149,11 @@ const App = () => {
       case "sort":
         setOpen(true);
         setType("sort");
+        break;
+      
+      case "filter":
+        setOpen(true);
+        setType("filter");
         break;
 
     }
@@ -199,9 +213,11 @@ const App = () => {
     renderToolbarInternalActions: ({ table }) => (
       <>
         {/* <MRT_GlobalFilterTextField table={table}></MRT_GlobalFilterTextField> */}
-        <MRT_ShowHideColumnsButton table={table} onClick={() => toggleDrawer("hide/show", true)}></MRT_ShowHideColumnsButton>
-        <GroupIcon onClick={()=>toggleDrawer("group",true)}></GroupIcon>
-        <SortIcon onClick={()=>toggleDrawer("sort",true)}></SortIcon>
+        <RemoveRedEyeIcon  table={table} onClick={() => toggleDrawer("hide/show", true)}></RemoveRedEyeIcon >
+        <SwapVertIcon onClick={()=>toggleDrawer("sort",true)}></SwapVertIcon>
+        <FilterListIcon onClick={()=>toggleDrawer("filter",true)}></FilterListIcon>
+        <LayersIcon onClick={()=>toggleDrawer("group",true)}></LayersIcon>
+      
       </>
     ),
     onGroupingChange:(state)=>{

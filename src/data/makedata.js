@@ -1,7 +1,9 @@
 function formatDate(dateString) {
-    const date = new Date(dateString);
-    const options = { day: '2-digit', month: 'short', year: '2-digit' };
-    return date.toLocaleDateString('en-GB', options).replace(/ /g, '-');
+  const date = new Date(dateString);
+  const options = { day: '2-digit', month: 'short', year: '2-digit', hour: '2-digit', minute: '2-digit' };
+  let formattedDate = date.toLocaleDateString('en-GB', options).replace(/ /g, '-');
+  formattedDate = formattedDate.replace(/,-/, ',');
+  return formattedDate;
   }
 
 export const columns = [
