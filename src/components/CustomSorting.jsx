@@ -34,7 +34,7 @@ const CustomSorting = ({ sorting, setSorting }) => {
               
                 <Box key={idx} sx={{border: 'solid 1px rgba(0, 0, 0, 0.2)',padding: '10px 0px 10px 10px', width: '250px'}}>
                     <Typography display={"flex"} alignItems={"center"} justifyContent={"space-between"} >{item?.header}
-                    <Button onClick={() => {handleSort(item.accessorKey);console.log(item.accessorKey)}}>
+                    <Button onClick={() => {handleSort(item.accessorKey);}}>
                         {getSortIcon(item.accessorKey)}
                     </Button>
                     </Typography>
