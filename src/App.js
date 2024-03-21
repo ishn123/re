@@ -23,6 +23,7 @@ const App = () => {
   const [type, setType] = useState("");
   const [grouping,setGrouping] = useState([]);
   const [sorting,setSorting] = useState([])
+  const [columnFilters, setColumnFilters] = useState([]);
 
   const [columnVisibility, setColumnVisibility] = useState({
     id: true,
@@ -128,7 +129,7 @@ const App = () => {
 
       case "filter":
         return (
-        <CustomFiltering></CustomFiltering>
+        <CustomFiltering setColumnFilters={setColumnFilters} table={table}></CustomFiltering>
         )
     }
 
@@ -208,7 +209,7 @@ const App = () => {
     },
     enableGrouping: true,
     positionToolbarAlertBanner:'none',
-    state: { columnVisibility,grouping,sorting },
+    state: { columnVisibility,grouping,sorting,columnFilters },
     onColumnVisibilityChange: setColumnVisibility,
     renderToolbarInternalActions: ({ table }) => (
       <>
@@ -224,7 +225,8 @@ const App = () => {
       const current = state();
       setGrouping(current)
     },
-    onSortingChange:setSorting
+    onSortingChange:setSorting,
+    onColumnFiltersChange:setColumnFilters
 
   });
 

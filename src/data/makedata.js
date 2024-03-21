@@ -36,7 +36,8 @@ export const columns = [
         id: 'createdAt',
         header: 'Created At',
         accessorKey:"createdAt",
-        size:20
+        size:20,
+        filterFn: 'between',
     },
     {
       accessorFn: (row) => formatDate(row.updatedAt),
@@ -49,7 +50,8 @@ export const columns = [
         id:'price',
         accessorKey: 'price',
         header: 'Price',
-        size:5
+        size:5,
+        filterFn: 'between',
     },
     {
       id:'sale_price',

@@ -3,13 +3,16 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import { Slider } from '@mui/material';
+import { Button, Slider } from '@mui/material';
 import TextField from '@mui/material/TextField';
-// import DateRangePicker from '@mui/lab/DateRangePicker';
-function CustomFiltering() {
+import { Calendar } from 'react-date-range';
+
+function CustomFiltering({setColumnFilters,table}) {
     const [Name, setName] = useState("");
 
-    const [createdDateRange, setCreatedDateRange] = useState([null, null]);
+    const [date, setDate] = useState("")
+    const [activate,setActivate] = useState(false);
+    
     const [value, setValue] = useState([11, 200]);
 
     const handleChange = (event, newValue) => {
@@ -19,6 +22,12 @@ function CustomFiltering() {
     const handleRefresh = () => {
       setValue([11, 200]);
     };
+
+    const handleSetFilters = ()=>{
+      console.log(value);
+      console.log(date)
+      setColumnFilters([{id:'name',"value":Name},{id:'price',"value":value}]);
+    }
   return (
     <div style={{padding:"10px"}}>
       <Box border={1}  p={2} borderRadius={2}>
@@ -42,9 +51,15 @@ function CustomFiltering() {
     </Box>
     <Box border={1} p={2} borderRadius={4}>
       <Box display="flex" alignItems="center">
-        <Typography variant="h6" component="div" flexGrow={1}>
-          Created At
+        <Typography variant="h6" component="div" flexGrow={1} onClick={()=>setActivate(!activate)}>
+          {date?date:"Created At"}
         </Typography>
+        {activate && (
+          <Calendar
+            date={new Date()}
+            onChange={(nv)=>console.log(nv)}
+        />
+        )}
         <IconButton onClick={()=>{}}>
           <RefreshIcon />
         </IconButton>
@@ -108,6 +123,7 @@ function CustomFiltering() {
       />
       
     </Box>
+    <Button variant="contained" onClick={()=>handleSetFilters()}>Apply Filters</Button>
     </div>
   )
 }
